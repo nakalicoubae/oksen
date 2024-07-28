@@ -1,0 +1,103 @@
+{% extends 'weightroom/base.html' %}
+{% load static %}
+{% block content %}
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700&display=swap');
+
+    body {
+        font-family: 'Noto Sans KR', sans-serif;
+    }
+
+    #showcase {
+        background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://cdn.ananti.kr/plf/ui/img/gangnam/at_fitness.jpg');
+        background-size: cover;
+        background-position: center;
+        color: white;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+        padding: 100px 0;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    #showcase h1 {
+        font-size: 3rem;
+        margin-bottom: 2rem;
+    }
+
+    #user-info, #login-prompt, .box {
+        background-color: rgba(0, 0, 0, 0.7);
+        padding: 2rem;
+        border-radius: 10px;
+        margin-top: 2rem;
+    }
+
+    #boxes {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 3rem;
+    }
+
+    .box {
+        flex: 1;
+        margin: 0 1rem;
+        text-align: center;
+    }
+
+    .btn {
+        background-color: #8e44ad;
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 5px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: background-color 0.3s;
+    }
+
+    .btn:hover {
+        background-color: #9b59b6;
+    }
+</style>
+
+<div id="showcase">
+    <div class="container">
+        <h1>옥센은 언제나 7중대원과 함께 합니다</h1>
+
+        {% if user.is_authenticated %}
+            <div id="user-info">
+                <h2>환영합니다, {{ user.username }}님!</h2>
+                <p>경고 횟수: {{ warnings }} | 현재 벌금: {{ current_fine }}원 | 미납 벌금: {{ overdue_fine }}원</p>
+                <p>헬스장 상태: <span style="color: {{ status_color }};">{{ gym_status }}</span></p>
+            </div>
+        {% else %}
+            <div id="login-prompt">
+                <p>로그인하여 더 많은 정보를 확인하세요.</p>
+                <a href="{% url 'weightroom:login' %}" class="btn">로그인</a>
+                <a href="{% url 'weightroom:register' %}" class="btn">회원가입</a>
+            </div>
+        {% endif %}
+
+        <div id="boxes">
+            <div class="box">
+                <h3>프로그램</h3>
+                <p>다양한 운동 프로그램을 만나보세요.</p>
+                <a href="https://youtu.be/roLvzjWKSdA?si=hwLXgAtQc_VQ_Cf2" target="_blank" class="btn">프로그램 보기</a>
+            </div>
+            <div class="box">
+                <h3>온라인 예약</h3>
+                <p>편리한 온라인 예약 시스템을 이용해보세요.</p>
+                <a href="#" class="btn">예약하기</a>
+            </div>
+            <div class="box">
+                <h3>상담 문의</h3>
+                <p>전문가와 상담을 통해 맞춤 운동을 찾아보세요.</p>
+                <p>010-0000-0000</p>
+                <a href="#" class="btn">상담 신청</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

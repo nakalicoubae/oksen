@@ -1,0 +1,17 @@
+{% extends 'weightroom/base.html' %}
+
+{% block content %}
+    <h2>관리자 대시보드</h2>
+    <h3>회원 목록</h3>
+    <ul>
+    {% for member in members %}
+        <li>{{ member.username }} ({{ member.student_number }}) - 경고: {{ member.accumulated_warnings }}, 벌금: {{ member.fine }}원</li>
+    {% endfor %}
+    </ul>
+    <h3>최근 사용 기록</h3>
+    <ul>
+    {% for usage in recent_usages %}
+        <li>{{ usage.member.username }} - {{ usage.usage_date }} {{ usage.usage_time.start_time }} ~ {{ usage.usage_time.end_time }}</li>
+    {% endfor %}
+    </ul>
+{% endblock %}

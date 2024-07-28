@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MACH 옥센 웨이트센터</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+    /* 전체 스타일 */
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #fffff0;  /* 아이보리 배경색 */
+        color: #333333;  /* 텍스트 색상을 어두운 회색으로 변경 */
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        width: 80%;
+        margin: auto;
+        overflow: hidden;
+    }
+
+    /* 헤더 */
+    header {
+        background: #070907;  /* 보라색 배경 */
+        color: #fffff0;  /* 아이보리 텍스트 색상 */
+        padding-top: 30px;
+        min-height: 70px;
+        border-bottom: #fffff0 3px solid;  /* 아이보리 테두리 */
+    }
+
+    header a {
+        color: #fffff0;  /* 아이보리 링크 색상 */
+        text-decoration: none;
+        text-transform: uppercase;
+        font-size: 16px;
+    }
+
+    header li {
+        float: left;
+        display: inline;
+        padding: 0 20px 0 20px;
+    }
+
+    header #branding {
+        float: left;
+    }
+
+    header #branding h1 {
+        margin: 0;
+    }
+
+    header nav {
+        float: right;
+        margin-top: 10px;
+    }
+
+    header .highlight, header .current a {
+        color: #fffff0;  /* 아이보리 강조 색상 */
+        font-weight: bold;
+    }
+
+    header a:hover {
+        color: #cccccc;
+        font-weight: bold;
+    }
+
+    /* 쇼케이스 */
+    #showcase {
+        min-height: 400px;
+        background: url('gym-image.jpg') no-repeat 0 -400px;
+        text-align: center;
+        color: #fffff0;  /* 아이보리 텍스트 색상 */
+    }
+
+    #showcase h1 {
+        margin-top: 100px;
+        font-size: 55px;
+        margin-bottom: 10px;
+    }
+
+    /* 박스 */
+    #boxes {
+        margin-top: 20px;
+    }
+
+    #boxes .box {
+        float: left;
+        text-align: center;
+        width: 30%;
+        padding: 10px;
+    }
+
+    #boxes .box i {
+        font-size: 50px;
+        color: #070907;  /* 보라색 아이콘 */
+    }
+
+    /* 메인 영역 */
+    #main {
+        padding: 20px 0;
+    }
+
+    /* 푸터 */
+    footer {
+        padding: 20px;
+        color: #fffff0;  /* 아이보리 텍스트 색상 */
+        background-color: #070907;  /* 보라색 배경 */
+        text-align: center;
+    }
+
+    /* 사용 가능/불가능 표시 */
+    .availability {
+        font-size: 18px;
+        font-weight: bold;
+        padding: 10px;
+        border-radius: 5px;
+        margin: 10px 0;
+    }
+
+    .available {
+        background-color: #4CAF50;
+        color: white;
+    }
+
+    .unavailable {
+        background-color: #f44336;
+        color: white;
+    }
+
+    /* 버튼 스타일 */
+    .btn {
+        display: inline-block;
+        padding: 10px 20px;
+        background: #070907;  /* 보라색 배경 */
+        color: #fffff0;  /* 아이보리 텍스트 색상 */
+        text-decoration: none;
+        margin-top: 10px;
+    }
+
+    .btn:hover {
+        background: #323232;  /* 어두운 회색으로 변경 */
+    }
+
+    /* 체크리스트 아이템 스타일 */
+    .checklist-item {
+        background-color: #f0f0f0;
+        padding: 15px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+    }
+
+    .checklist-item h3 {
+        color: #070907;  /* 보라색 제목 */
+        margin-top: 0;
+    }
+.form-container {
+        max-width: 400px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #fffff0;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+
+    .form-group input {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+    }
+
+    .form-group small {
+        display: block;
+        margin-top: 5px;
+        color: #666;
+    }
+
+    .form-group ul {
+        margin-top: 5px;
+        padding-left: 20px;
+        color: #666;
+    }
+
+    button[type="submit"] {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        background-color: #070907;
+        color: #fffff0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    button[type="submit"]:hover {
+        background-color: #1a1a1a;
+    }
+
+    .error-message {
+        color: red;
+        margin-top: 10px;
+    }
+.checklist-item {
+        margin-bottom: 20px;
+        padding: 10px;
+        background-color: #f0f0f0;
+        border-radius: 5px;
+    }
+
+    .checklist-item h3 {
+        margin-top: 0;
+        margin-bottom: 10px;
+    }
+
+    .checklist-item p {
+        margin: 5px 0;
+    }
+</style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div id="branding">
+                <h1><span class="highlight">MACH</span> 옥센 웨이트센터</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="{% url 'weightroom:home' %}">홈</a></li>
+                    <li><a href="{% url 'weightroom:checklist' %}">체크리스트</a></li>
+                    <li><a href="{% url 'weightroom:usage_time' %}">사용 시간</a></li>
+                    {% if user.is_staff %}
+                    <li><a href="{% url 'weightroom:manager_dashboard' %}">관리자 대시보드</a></li>
+                    {% endif %}
+                    {% if user.is_authenticated %}
+                    <li><a href="{% url 'weightroom:logout' %}">로그아웃</a></li>
+                    {% else %}
+                    <li><a href="{% url 'weightroom:login' %}">로그인</a></li>
+                    <li><a href="{% url 'weightroom:register' %}">회원가입</a></li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="main">
+        <div class="container">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 MACH 옥센 웨이트센터. All rights reserved.</p>
+    </footer>
+</body>
+</html>

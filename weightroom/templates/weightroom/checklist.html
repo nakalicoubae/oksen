@@ -1,0 +1,23 @@
+{% extends 'weightroom/base.html' %}
+{% load custom_filters %}
+{% block content %}
+
+<h2>체크리스트</h2>
+
+<form method="post">
+    {% csrf_token %}
+    {% for field_name in field_names %}
+        <div class="checklist-item">
+            <h3>{{ field_name|cut:"_청소" }}</h3>
+            <p>청소: {{ form|get_form_field:field_name }}</p>
+            <p>파손: {{ form|get_form_field:field_name|cut:"청소"|add:"파손" }}</p>
+        </div>
+    {% endfor %}
+
+    <h3>요구 및 불편사항</h3>
+    {{ form.요구_및_불편사항 }}
+
+    <button type="submit">저장</button>
+</form>
+
+{% endblock %}

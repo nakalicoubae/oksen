@@ -1,0 +1,22 @@
+{% extends 'weightroom/base.html' %}
+
+{% block content %}
+<div class="form-container">
+    <h2>로그인</h2>
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="id_student_number">교번:</label>
+            <input type="number" name="student_number" required id="id_student_number">
+        </div>
+        <div class="form-group">
+            <label for="id_password">비밀번호:</label>
+            <input type="password" name="password" required id="id_password">
+        </div>
+        <button type="submit">로그인</button>
+    </form>
+    {% if error %}
+        <p class="error-message">비밀번호가 틀렸습니다.</p>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,59 @@
+{% extends 'weightroom/base.html' %}
+{% load tz %}
+{% block content %}
+
+<h2>사용 시간</h2>
+
+{% if current_usage %}
+    <p>현재 사용 중입니다.</p>
+    <p>시작 시간: <span id="start-time"></span></p>
+    <p>종료 예정 시간: <span id="end-time"></span></p>
+    <p>경과 시간: <span id="timer">00:00:00</span></p>
+
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" name="extend" id="extend-btn" disabled>30분 연장</button>
+        <button type="submit" name="end">사용 종료</button>
+    </form>
+
+    <script>
+        var startTime = new Date();
+        var endTime = new Date(startTime.getTime() + 60 * 60 * 1000); // 1시간 후
+
+        function updateTimer() {
+            var now = new Date();
+            var diff = Math.floor((now - startTime) / 1000);
+            var hours = Math.floor(diff / 3600);
+            var minutes = Math.floor((diff % 3600) / 60);
+            var seconds = diff % 60;
+
+            document.getElementById('timer').textContent =
+                (hours < 10 ? "0" : "") + hours + ":" +
+                (minutes < 10 ? "0" : "") + minutes + ":" +
+                (seconds < 10 ? "0" : "") + seconds;
+
+            document.getElementById('start-time').textContent = startTime.toLocaleTimeString();
+            document.getElementById('end-time').textContent = endTime.toLocaleTimeString();
+
+            // 종료 10분 전부터 연장 버튼 활성화
+            var extendBtn = document.getElementById('extend-btn');
+            if ((endTime - now) <= 600000 && (endTime - now) > 0) {
+                extendBtn.disabled = false;
+            } else {
+                extendBtn.disabled = true;
+            }
+        }
+
+        setInterval(updateTimer, 1000);
+        updateTimer(); // 초기 호출
+    </script>
+
+{% else %}
+    <p>현재 사용 중이 아닙니다.</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" name="start">시작하기</button>
+    </form>
+{% endif %}
+
+{% endblock %}
